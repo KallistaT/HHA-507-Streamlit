@@ -99,6 +99,7 @@ st.header('3. What is the most expensive outpatient APCs code for Stony Brook Un
 st.subheader('Stony Brook Hospital Outpatient APCs')
 outpatient_APCs_pivot = outpatient_table.pivot_table(index=['provider_id', 'provider_name', 'apc'], values=['average_total_payments'])
 outpatient_APCs_desc = outpatient_APCs_pivot.sort_values(['average_total_payments'], ascending=False)
+st.dataframe(outpatient_APCs_desc)
 st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 - Level IV Endoscopy Upper Airway" with an average total pyament of $2,307.')
  
 
