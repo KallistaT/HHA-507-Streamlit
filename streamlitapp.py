@@ -88,8 +88,6 @@ st.dataframe(inpatient_table)
 
 st.header('What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
 st.subheader('Stony Brook Hospital Inpatient DRGs')
-inpatient_df_DRGs = inpatient_df['average_total_payments']
-st.bar_chart(inpatient_df['average_total_payments'])
 inpatient_DRGs_pivot = inpatient_df.pivot_table(index=['provider_id','provider_name','drg_definition'],values=['average_total_payments'])
 inpatient_DRGs_desc = inpatient_DRGs_pivot.sort_values(['average_total_payments'], ascending=False)
 st.dataframe(inpatient_DRGs_desc)
