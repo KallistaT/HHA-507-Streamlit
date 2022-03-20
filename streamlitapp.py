@@ -75,7 +75,7 @@ st.dataframe(sbu_df)
 
 # Question 1
 rating_table = ny_df['hospital_overall_rating'].value_counts().reset_index()
-st.header('How does Stony Brook Hospital''s overall rating compare to the rest of New York State hospitals?')
+st.header('1. How does Stony Brook Hospital''s overall rating compare to the rest of New York State hospitals?')
 st.subheader('New York State Hospital Ratings')
 st.markdown('The following table shows the distribution of hospital ratings across New York State. From the table above, we can see that Stony Brook University Hospital has an overall rating of 4, landing in the top 10-11% highest hospital ratings in New York.')
 st.dataframe(rating_table)
@@ -86,11 +86,24 @@ st.header('Stony Brook University Hospital inpatient data')
 st.markdown('The following table shows inpatient data for Stony Brook University hospital.')
 st.dataframe(inpatient_table)
 
-st.header('What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
+st.header('2. What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
 st.subheader('Stony Brook Hospital Inpatient DRGs')
 inpatient_DRGs_pivot = inpatient_table.pivot_table(index=['provider_id','provider_name','drg_definition'],values=['average_total_payments'])
 inpatient_DRGs_desc = inpatient_DRGs_pivot.sort_values(['average_total_payments'], ascending=False)
 st.dataframe(inpatient_DRGs_desc)
+st.markdown('The most expensive inpatient DRGs code for SBU Hospital is "003 - ECMO OR TRACH W MV >96 HRS OR PDX EXC FACE, MOUTH % NECK W MAJ O.R." with an average total payment of $216,636.')
+
+#Question 3
+outpatient_table = outpatient_df[outpatient_df['provider_id'] == 330393]
+st.header('3. What is the most expensive outpatient APCs code for Stony Brook University Hospital?')
+st.subheader('Stony Brook Hospital Outpatient APCs')
+outpatient_APCs_pivot = outpatient_table.pivot_table(index=['provider_id', 'provider_name', 'apc'], values=['average_total_payments'])
+outpatient_APCs_desc = outpatient_APCs_pivot.sort_values(['average_total_payments'], ascending=False)
+st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 - Level IV Endoscopy Upper Airway" with an average total pyament of $2,307.')
+ 
+
+
+
 
 
 
