@@ -9,6 +9,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+import plotly.express as px
+from plotly.subplots import make_subplots
 
 # Loading in csvs
 @st.cache
@@ -106,7 +108,8 @@ st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 -
 st.header('New York Hospitals Readmission National Comparison')
 st.markdown('This is a bar chart displaying the ')
 bar1 = ny_df['patient_experience_national_comparison'].value_counts().reset_index()
-st.bar_chart(data=bar1, width=0, height=0, use_container_width=True)
+fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
+st.plotly_chart(fig1) 
 
 
 
