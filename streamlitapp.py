@@ -101,7 +101,13 @@ outpatient_APCs_pivot = outpatient_table.pivot_table(index=['provider_id', 'prov
 outpatient_APCs_desc = outpatient_APCs_pivot.sort_values(['average_total_payments'], ascending=False)
 st.dataframe(outpatient_APCs_desc)
 st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 - Level IV Endoscopy Upper Airway" with an average total pyament of $2,307.')
- 
+
+#Question 4
+bar1 = ny_df['readmission_national_comparison'].value_counts().reset_index()
+st.bar_chart(data=bar1, width=0, height=0, use_container_width=True)
+
+
+
 
 
 
