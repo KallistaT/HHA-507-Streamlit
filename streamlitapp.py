@@ -105,14 +105,15 @@ st.dataframe(outpatient_APCs_desc)
 st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 - Level IV Endoscopy Upper Airway" with an average total pyament of $2,307.')
 
 #Question 4
-st.header('New York Hospitals Patient Experience National Comparison')
+st.header('4. How do most hospitals in New York State compare to the national average for patient experience?')
+st.subheader('New York Hospitals Patient Experience National Comparison')
 st.markdown('This is a bar chart displaying the national comparison of patient experience in NY Hospitals. The majority of hospitals in NY fall below the national average for patient experience while only 16 hospitals are above the national average.')
 bar1 = ny_df['patient_experience_national_comparison'].value_counts().reset_index()
 fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
 st.plotly_chart(fig1) 
 
 #Question 5
-st.header('Map of Acute Care Hospitals in California')
+st.header('5. Where are most acute care hospitals in California located?')
 st.markdown('Most acute care hospitals in California are concentrated in the Los Angeles County area.')
 ca_df = hospital_df[hospital_df['state'] == 'CA']
 acute_hospitals_ca = ca_df[ca_df['hospital_type'] == 'Acute Care Hospitals']
@@ -124,6 +125,8 @@ hospitals_ca_gps['lat'] = pd.to_numeric(hospitals_ca_gps['lat'])
 st.map(hospitals_ca_gps)
 
 #Question 6
+st.header('6. Is there a correlation between average covered charges and average medicare payments for inpatient services in New York City hospitals?')
+st.markdown('There is a strong positive linear association between the average covered charges and average medicare payments for inpatient services in NYC hospitals, with few outliers.')
 inpatient_NYC = inpatient_df[inpatient_df['provider_city'] == 'NEW YORK']
 fig2 = px.scatter(inpatient_NYC, x="average_covered_charges", y="average_medicare_payments")
 st.plotly_chart(fig2)
