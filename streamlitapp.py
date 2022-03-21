@@ -12,6 +12,9 @@ import time
 import plotly.express as px
 from plotly.subplots import make_subplots
 
+st.set_page_config(layout="centered")
+st.markdown('<style>body{background-color: Blue;}</style>',unsafe_allow_html=True)
+
 # Loading in csvs
 @st.cache
 def load_hospitals():
