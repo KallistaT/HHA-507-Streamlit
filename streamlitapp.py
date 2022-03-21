@@ -112,8 +112,8 @@ fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison', color
 st.plotly_chart(fig1) 
 
 #Question 5
-fig2 = px.scatter(ny_df, x='effectiveness_of_care_national_comparison', y='readmission_national_comparison')
-st.plotly_chart(fig2)
+#fig2 = px.scatter(ny_df, x='effectiveness_of_care_national_comparison', y='readmission_national_comparison')
+#st.plotly_chart(fig2)
 
 
 
