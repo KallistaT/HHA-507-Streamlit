@@ -112,13 +112,15 @@ fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
 st.plotly_chart(fig1) 
 
 #Question 5
-acute_hospitals_ny = ny_df[ny_df['hospital_type'] == 'Acute Care Hospitals']
-hospitals_ny_gps = acute_hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
-hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
-hospitals_ny_gps = hospitals_ny_gps.dropna()
-hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
-hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
-st.map(hospitals_ny_gps)
+st.header('Map of Acute Care Hospitals in New York State')
+ca_df = hospital_df[hospital_df['state'] == 'CA']
+acute_hospitals_ca = ca_df[ca_df['hospital_type'] == 'Acute Care Hospitals']
+hospitals_ca_gps = acute_hospitals_ca['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
+hospitals_ca_gps['lon'] = hospitals_ca_gps['lon'].str.strip('(')
+hospitals_ca_gps = hospitals_ca_gps.dropna()
+hospitals_ca_gps['lon'] = pd.to_numeric(hospitals_ca_gps['lon'])
+hospitals_ca_gps['lat'] = pd.to_numeric(hospitals_ca_gps['lat'])
+st.map(hospitals_ca_gps)
 
 
 
