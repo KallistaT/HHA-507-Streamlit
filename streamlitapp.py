@@ -112,7 +112,8 @@ fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
 st.plotly_chart(fig1) 
 
 #Question 5
-st.header('Map of Acute Care Hospitals in New York State')
+st.header('Map of Acute Care Hospitals in California')
+st.markdown('Most acute care hospitals in California are concentrated in the Los Angeles County area.')
 ca_df = hospital_df[hospital_df['state'] == 'CA']
 acute_hospitals_ca = ca_df[ca_df['hospital_type'] == 'Acute Care Hospitals']
 hospitals_ca_gps = acute_hospitals_ca['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
@@ -122,6 +123,9 @@ hospitals_ca_gps['lon'] = pd.to_numeric(hospitals_ca_gps['lon'])
 hospitals_ca_gps['lat'] = pd.to_numeric(hospitals_ca_gps['lat'])
 st.map(hospitals_ca_gps)
 
+#Question 6
+fig = px.scatter(acute_hospitals_ca, x="hospital_overall_rating", y="readmission_national_comparison")
+fig.show()
 
 
 
