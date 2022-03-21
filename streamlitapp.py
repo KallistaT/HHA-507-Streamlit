@@ -33,6 +33,8 @@ my_bar = st.progress(0)
 for percent_complete in range(100):
     time.sleep(0.1)
     my_bar.progress(percent_complete + 1)
+
+st.set_page_config(layout="wide")
     
 ## Streamlit Questions
 st.title('HHA 507 Final Assignment: E2E with Streamlit')
@@ -41,9 +43,9 @@ st.write('Questions:')
 st.write('1. How does Stony Brook Hospital''s rating compare with the rest of NY?')
 st.write('2. What is the most expensive inpatient DRGs for Stony Brook University Hospital?')
 st.write('3. What is the most expensive outpatient APCs for Stony Brook University Hospital?')
-st.write('4. ...')
-st.write('5. ...')
-st.write('6. ...')    
+st.write('4. How do most hospitals in New York State compare to the national average for patient experience?')
+st.write('5. Where are most acute care hospitals in California located?')
+st.write('6. Is there a correlation between average covered charges and average medicare payments for inpatient services in New York City hospitals?')    
 
 # Loading in dataframes
 hospital_df = load_hospitals()
@@ -131,6 +133,7 @@ inpatient_NYC = inpatient_df[inpatient_df['provider_city'] == 'NEW YORK']
 fig2 = px.scatter(inpatient_NYC, x="average_covered_charges", y="average_medicare_payments")
 st.plotly_chart(fig2)
 
+st.subheader('Thanks for stopping by!')
 
 
 
