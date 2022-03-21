@@ -53,22 +53,25 @@ outpatient_df = load_outpatient()
 # Previewing dataframes
 st.header('Hospital Data Preview')
 st.markdown('This dataset displays information on hospitals across the United States.')
-with st.expander("Open to see"):
+with st.expander("Expand"):
     st.dataframe(hospital_df)
 
 st.header('Inpatient Data Preview')
 st.markdown('This dataset displays information on inpatient data for Stony Brook University Hospital.')
-st.dataframe(inpatient_df)
+with st.expander("Expand"):
+    st.dataframe(inpatient_df)
 
 st.header('Outpatient Data Preview')
 st.markdown('This dataset displays information on outpatient data for Stony Brook University Hospital.')
-st.dataframe(outpatient_df)
+with st.expander("Expand"):
+    st.dataframe(outpatient_df)
 
 # Creating a dataframe for New York State hospitals
 ny_df = hospital_df[hospital_df['state'] == 'NY']
 st.header('Hospitals in New York State')
 st.markdown('This dataset displays information on hospitals in New York State.')
-st.dataframe(ny_df)
+with st.expander("Expand"):
+    st.dataframe(ny_df)
 
 # Creating a dataframe for Stony Brook University Hospital
 sbu_df = hospital_df[hospital_df['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
