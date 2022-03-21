@@ -57,11 +57,11 @@ st.dataframe(hospital_df)
 
 st.header('Inpatient Data Preview')
 st.markdown('This dataset displays information on inpatient data for Stony Brook University Hospital.')
-st.dataframe(outpatient_df)
+st.dataframe(inpatient_df)
 
 st.header('Outpatient Data Preview')
 st.markdown('This dataset displays information on outpatient data for Stony Brook University Hospital.')
-st.dataframe(inpatient_df)
+st.dataframe(outpatient_df)
 
 # Creating a dataframe for New York State hospitals
 ny_df = hospital_df[hospital_df['state'] == 'NY']
@@ -124,7 +124,8 @@ hospitals_ca_gps['lat'] = pd.to_numeric(hospitals_ca_gps['lat'])
 st.map(hospitals_ca_gps)
 
 #Question 6
-fig2 = px.scatter(inpatient_df, x="average_covered_charges", y="average_medicare_payments")
+inpatient_NYC = inpatient_df[inpatient_df['provider_city'] == 'NEW YORK']
+fig2 = px.scatter(inpatient_NYC, x="average_covered_charges", y="average_medicare_payments")
 st.plotly_chart(fig2)
 
 
