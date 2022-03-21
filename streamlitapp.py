@@ -112,8 +112,13 @@ fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
 st.plotly_chart(fig1) 
 
 #Question 5
-#fig2 = px.scatter(ny_df, x='effectiveness_of_care_national_comparison', y='readmission_national_comparison')
-#st.plotly_chart(fig2)
+acute_hospitals_ny = hospital_df[hospital_df['hospital_type'] == 'Acute Care Hospitals']
+hospitals_ny_gps = acute_hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
+hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
+hospitals_ny_gps = hospitals_ny_gps.dropna()
+hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
+hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
+st.map(hospitals_ny_gps)
 
 
 
