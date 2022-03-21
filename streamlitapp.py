@@ -108,7 +108,7 @@ st.markdown('The most expensive outpatient APCs code for SBU Hospital is "0074 -
 st.header('New York Hospitals Patient Experience National Comparison')
 st.markdown('This is a bar chart displaying the national comparison of patient experience in NY Hospitals. The majority of hospitals in NY fall below the national average for patient experience while only 16 hospitals are above the national average.')
 bar1 = ny_df['patient_experience_national_comparison'].value_counts().reset_index()
-fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison', color_discrete_map='green')
+fig1 = px.bar(bar1, x='index', y='patient_experience_national_comparison')
 st.plotly_chart(fig1) 
 
 #Question 5
