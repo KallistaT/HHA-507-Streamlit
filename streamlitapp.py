@@ -124,7 +124,7 @@ hospitals_ca_gps['lat'] = pd.to_numeric(hospitals_ca_gps['lat'])
 st.map(hospitals_ca_gps)
 
 #Question 6
-fig2 = px.scatter(acute_hospitals_ca, x="hospital_overall_rating", y="readmission_national_comparison")
+fig2 = px.scatter(inpatient_df, x="average_covered_charges", y="average_medicare_payments")
 st.plotly_chart(fig2)
 
 
