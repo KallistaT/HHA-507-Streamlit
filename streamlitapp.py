@@ -12,8 +12,6 @@ import time
 import plotly.express as px
 from plotly.subplots import make_subplots
 
-st.set_page_config(layout="wide")
-
 # Loading in csvs
 @st.cache
 def load_hospitals():
@@ -55,7 +53,8 @@ outpatient_df = load_outpatient()
 # Previewing dataframes
 st.header('Hospital Data Preview')
 st.markdown('This dataset displays information on hospitals across the United States.')
-st.dataframe(hospital_df)
+with st.expander("Open to see"):
+    st.dataframe(hospital_df)
 
 st.header('Inpatient Data Preview')
 st.markdown('This dataset displays information on inpatient data for Stony Brook University Hospital.')
